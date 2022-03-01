@@ -31,7 +31,7 @@ class JobViewSet(viewsets.GenericViewSet):
         try:
             benchmarker = Benchmarker.objects.get(ip=client_ip)
         except Benchmarker.DoesNotExist:
-            return Response({"error":'Unknown IP Address'}, status=status.HTTP_400_BAD_REQUEST)
+            return Response({"error":'Unknown IP Address', "ip-address": client_ip}, status=status.HTTP_400_BAD_REQUEST)
 
 
         # チームとベンチマーカーが紐づくと仮定して、ジョブを取ってくる

@@ -9,7 +9,7 @@ RUN mkdir -p /opt/app
 
 WORKDIR /opt/app
 
-RUN pip install gunicorn psycopg2-binary
+RUN pip install gunicorn psycopg2-binary==2.8.6
 
 ADD requirements.txt /opt/app/
 RUN pip install -r requirements.txt
