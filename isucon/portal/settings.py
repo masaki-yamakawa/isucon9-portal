@@ -194,9 +194,17 @@ REGISTRATION_END_AT = portal_utils.get_jst_datetime(2022, 3, 31, 9, 0, 0)
 # コンテスト開催期間
 # 日付
 CONTEST_DATES = [
-    datetime.date(2022, 3, 1),
-    datetime.date(2022, 3, 2),
-    datetime.date(2023, 3, 3)
+    datetime.date(2022, 3, 5),
+    datetime.date(2022, 3, 6),
+    datetime.date(2022, 3, 7),
+    datetime.date(2022, 3, 8),
+    datetime.date(2022, 3, 9),
+    datetime.date(2022, 3, 10),
+    datetime.date(2022, 3, 11),
+    datetime.date(2022, 3, 12),
+    datetime.date(2022, 3, 13),
+    datetime.date(2022, 3, 14),
+    datetime.date(2023, 3, 15)
 ]
 
 # 時刻

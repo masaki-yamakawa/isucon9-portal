@@ -12,9 +12,10 @@ def global_ip_validator(value):
         address = ipaddress.ip_address(value)
     except ValueError:
         raise forms.ValidationError("IPv4アドレスではありません")
-    if address.is_global:
-        return value
-    raise forms.ValidationError("グローバルIPではありません")
+#    if address.is_global:
+#        return value
+#    raise forms.ValidationError("グローバルIPではありません")
+    return value
 
 def private_ip_validator(value):
     try:
