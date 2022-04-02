@@ -188,23 +188,26 @@ LOGGING = {
 
 
 # 登録期間
-REGISTRATION_START_AT = portal_utils.get_jst_datetime(2022, 2, 1, 9, 0, 0)
-REGISTRATION_END_AT = portal_utils.get_jst_datetime(2022, 3, 31, 9, 0, 0)
+REGISTRATION_START_AT = portal_utils.get_jst_datetime(2022, 4, 1, 9, 0, 0)
+REGISTRATION_END_AT = portal_utils.get_jst_datetime(2022, 5, 31, 9, 0, 0)
 
 # コンテスト開催期間
 # 日付
 CONTEST_DATES = [
-    datetime.date(2022, 3, 5),
-    datetime.date(2022, 3, 6),
-    datetime.date(2022, 3, 7),
-    datetime.date(2022, 3, 8),
-    datetime.date(2022, 3, 9),
-    datetime.date(2022, 3, 10),
-    datetime.date(2022, 3, 11),
-    datetime.date(2022, 3, 12),
-    datetime.date(2022, 3, 13),
-    datetime.date(2022, 3, 14),
-    datetime.date(2023, 3, 15)
+    datetime.date(2022, 4, 2),
+    datetime.date(2022, 4, 3),
+    datetime.date(2022, 4, 4),
+    datetime.date(2022, 4, 5),
+    datetime.date(2022, 4, 6),
+    datetime.date(2022, 4, 7),
+    datetime.date(2022, 4, 8),
+    datetime.date(2022, 4, 9),
+    datetime.date(2022, 4, 10),
+    datetime.date(2022, 4, 11),
+    datetime.date(2022, 4, 12),
+    datetime.date(2022, 4, 13),
+    datetime.date(2022, 4, 14),
+    datetime.date(2023, 4, 15)
 ]
 
 # 時刻
@@ -212,7 +215,7 @@ CONTEST_START_TIME = portal_utils.get_jst_time(0, 0, 0)
 CONTEST_END_TIME = portal_utils.get_jst_time(23, 59, 59)
 
 # Result
-SHOW_RESULT_AFTER = portal_utils.get_jst_datetime(2019, 10, 5, 22, 0, 0)
+SHOW_RESULT_AFTER = portal_utils.get_jst_datetime(2022, 4, 1, 22, 0, 0)
 
 # Github認証に使うトークン
 # TODO: 入れ替える
