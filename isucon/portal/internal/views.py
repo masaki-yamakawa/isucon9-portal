@@ -1,5 +1,7 @@
+import json
+
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 
 from rest_framework import viewsets, status, serializers
 from rest_framework.decorators import action
@@ -9,10 +11,9 @@ from rest_framework import exceptions
 from ipware import get_client_ip
 
 from isucon.portal.authentication.models import Team
-from isucon.portal.contest.models import Benchmarker, Job
-from isucon.portal.internal.serializers import JobSerializer, JobResultSerializer
+from isucon.portal.contest.models import Benchmarker, Job, Server
+from isucon.portal.internal.serializers import JobSerializer, JobResultSerializer, ServerSerializer
 from isucon.portal.contest import exceptions as contest_exceptions
-
 
 router = SimpleRouter()
 
@@ -60,6 +61,43 @@ class JobViewSet(viewsets.GenericViewSet):
         # 結局ジョブが見つからなかった
         return Response(status=status.HTTP_204_NO_CONTENT)
 
+    @action(methods=['get'], detail=False)
+    def latest(self, request, pk=None):
+        team_id = request.GET.get(key='team_id', default='-1')
+        # TODO Delete print statement below this
+#        print('Call latest API: team_id=' + team_id)
+        job = Job.objects.get_latest(team_id)
+        serializer = self.get_serializer_class()(instance=job)
+        return Response(serializer.data)
+
+    @action(methods=['post'], detail=False)
+    def enqueue(self, request):
+        params = json.loads(request.body)
+        team_id = params.get('team_id', -1)
+        # TODO Delete print statement below this
+#        print('Call enqueue API: team_id=' + str(team_id))
+        team = Team.objects.filter(id=team_id).first()
+        if not Server.objects.of_team(team).exists():
+            return JsonResponse(
+                {"error": "Server is not set"}, status = 409
+            )
+
+        job = None
+        try:
+            job = Job.objects.enqueue(team)
+        except Job.DuplicateJobError:
+            return JsonResponse(
+                {"error": "Job is running"}, status = 409
+            )
+
+        data = {
+            "id": job.id,
+        }
+
+        return JsonResponse(
+            data, status = 200
+        )
+
 
 router.register("job", JobViewSet, base_name="job")
 
@@ -91,3 +129,25 @@ class JobResultViewSet(viewsets.GenericViewSet):
 
 
 router.register("job", JobResultViewSet, base_name="job-result")
+
+
+class ServerViewSet(viewsets.GenericViewSet):
+    serializer_class = ServerSerializer
+
+    @action(methods=['get'], detail=False)
+    def target(self, request, pk=None):
+        participate_at = request.GET.get(key='participate_at', default='1999-12-31')
+        # TODO Delete print statement below this
+#        print('Call target API: participate_at=' + str(participate_at))
+        teams = Team.objects.filter(participate_at=participate_at).order_by('id').all()
+        servers = []
+        for team in teams:
+            # TODO 後で削除
+            print('Append teams_id=' + str(team.id))
+            server = Server.objects.get_bench_target(team)
+            servers.append(server)
+
+        serializer = self.get_serializer_class()(instance=servers, many=True)
+        return Response(serializer.data)
+
+router.register("server", ServerViewSet, base_name="server")

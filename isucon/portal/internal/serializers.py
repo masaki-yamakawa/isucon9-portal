@@ -8,7 +8,7 @@ class ServerSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Server
-        fields = ('id', 'hostname', 'global_ip', 'private_ip', 'is_bench_target')
+        fields = ('id', 'hostname', 'global_ip', 'private_ip', 'is_bench_target', 'team_id')
         read_only_fields = fields
 
 

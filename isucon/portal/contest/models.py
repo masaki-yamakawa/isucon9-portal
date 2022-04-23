@@ -151,6 +151,9 @@ class JobManager(models.Manager):
             Job.RUNNING,
         ]).exists()
 
+    def get_latest(self, team_id):
+        return self.get_queryset().filter(team_id=team_id).order_by('created_at').last()
+
 
 class Job(models.Model):
     class Meta:
