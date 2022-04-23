@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  enqueuer:
+    build: .
+    hostname: enqueuer
+
+networks:
+  default:
+    name: isucon9-qualify_default
