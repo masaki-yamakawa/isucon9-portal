@@ -37,10 +37,11 @@
                                 <th>Rank</th>
                                 <th>Id</th>
                                 <th>Name</th>
-                                <th>Latest Total Score</th>
+                                <th>Latest Score</th>
                                 <th>Time</th>
-                                <th>Best Total Score</th>
+                                <th>Best Score</th>
                                 <th>Time</th>
+                                <th>Total Score</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -53,6 +54,7 @@
                                 <td>{{ score.latest_scored_at|date:"H:i:s" }}</td>
                                 <td class="has-text-right">{{ score.best_score|intcomma }}</td>
                                 <td>{{ score.best_scored_at|date:"H:i:s" }}</td>
+                                <td class="has-text-right">{{ score.total_score|intcomma }}</td>
                             </tr>
                             {% endfor %}
                             {% for score in failed %}
@@ -64,6 +66,7 @@
                                 <td>{{ score.latest_scored_at|date:"H:i:s" }}</td>
                                 <td class="has-text-right">{{ score.best_score|intcomma }}</td>
                                 <td>{{ score.best_scored_at|date:"H:i:s" }}</td>
+                                <td class="has-text-right">{{ score.total_score|intcomma }}</td>
                             </tr>
                             {% endfor %}
                         </tbody>

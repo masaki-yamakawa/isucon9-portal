@@ -22,10 +22,18 @@
                     <td>{{ job.target_ip }}</td>
                 </tr>
                 <tr>
-                    <th width="10%">Total Score</th>
+                    <th width="10%">Score</th>
                     <td>
                       {% if job.is_finished %}
                         {{ job.score|intcomma }}
+                      {% endif %}
+                    </td>
+                </tr>
+                <tr>
+                    <th width="10%">Total Score</th>
+                    <td>
+                      {% if job.is_finished %}
+                        {{ job.total_score|intcomma }}
                       {% endif %}
                     </td>
                 </tr>

@@ -40,16 +40,22 @@ def dashboard(request):
     context = get_base_context(request.user)
 
     recent_jobs = Job.objects.of_team(team=request.user.team).order_by("-created_at")[:10]
-    top_teams = Score.objects.passed().filter(team__participate_at=request.user.team.participate_at).select_related("team")[:30]
+    #top_teams = Score.objects.passed().filter(team__participate_at=request.user.team.participate_at).select_related("team")[:30]
+    #累計スコアの降順表示
+    top_teams = Score.objects.order_by("-total_score").filter(team__participate_at=request.user.team.participate_at).select_related("team")[:30]
 
     # チームのスコアを取得
     try:
         team = Score.objects.get(team=request.user.team)
-        team_score = team.latest_score
+#        team_score = team.latest_score
+        #チームスコアを累計にする
+        team_score = team.total_score
     except:
         Score.objects.create(team=request.user.team)
         team = Score.objects.get(team=request.user.team)
-        team_score = team.latest_score
+#        team_score = team.latest_score
+        #チームスコアを累計にする
+        team_score = team.total_score
 
     context.update({
         "recent_jobs": recent_jobs,
@@ -121,8 +127,10 @@ def scores(request):
     context = get_base_context(request.user)
 
     context.update({
-        "passed": Score.objects.passed().filter(team__participate_at=request.user.team.participate_at).select_related("team"),
-        "failed": Score.objects.failed().filter(team__participate_at=request.user.team.participate_at).select_related("team"),
+#        "passed": Score.objects.passed().filter(team__participate_at=request.user.team.participate_at).select_related("team"),
+#        "failed": Score.objects.failed().filter(team__participate_at=request.user.team.participate_at).select_related("team"),
+        "passed": Score.objects.order_by("-total_score").filter(team__participate_at=request.user.team.participate_at).select_related("team"),
+#        "failed": Score.objects.order_by("-total_score").filter(team__participate_at=request.user.team.participate_at).select_related("team"),
     })
 
     return render(request, "scores.html", context)

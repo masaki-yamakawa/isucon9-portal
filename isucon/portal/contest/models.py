@@ -186,6 +186,7 @@ class Job(models.Model):
 
     reason = models.TextField("結果メッセージ", blank=True)
     score = models.IntegerField("獲得スコア", default=0, null=False)
+    total_score = models.IntegerField("累計獲得スコア", default=0, null=False)
 
     # ベタテキスト
     stdout = models.TextField("ログ標準出力", blank=True)
@@ -225,8 +226,13 @@ class Job(models.Model):
         except:
             pass
         return {}
-
+#累計取得スコア追加
     def done(self, score, is_passed, stdout, stderr, reason, status=DONE):
+        try:
+            self.total_score = Job.objects.filter(team=self.team).aggregate(score_sum=Sum('score'))['score_sum'] + score
+        except IndexError:
+            pass
+
         # ベンチマークが終了したらログを書き込む
         self.stdout = stdout
         self.stderr = stderr
@@ -237,6 +243,9 @@ class Job(models.Model):
 
         self.reason = reason
         self.finished_at = timezone.now()
+        
+        
+        
         self.save()
 
     def abort(self, reason, stdout, stderr):
@@ -267,6 +276,7 @@ class Score(LogicalDeleteMixin, models.Model):
     best_score = models.IntegerField('ベストスコア', default=0)
     best_scored_at = models.DateTimeField('ベストスコア日時', blank=True, null=True)
     latest_score = models.IntegerField('最新スコア', default=0)
+    total_score = models.IntegerField('累計スコア', default=0)
     latest_scored_at = models.DateTimeField('最新スコア日時', blank=True, null=True)
     latest_is_passed = models.BooleanField('最新のベンチマーク成否フラグ', default=False, blank=True)
 
@@ -286,6 +296,10 @@ class Score(LogicalDeleteMixin, models.Model):
             best_score_job = Job.objects.filter(team=self.team, status=Job.DONE, is_passed=True).order_by("-score")[0]
             self.best_score = best_score_job.score
             self.best_scored_at = best_score_job.finished_at
+        except IndexError:
+            pass
+        try:
+            self.total_score = Job.objects.filter(team=self.team).aggregate(score_sum=Sum('score'))['score_sum'] 
         except IndexError:
             pass
 

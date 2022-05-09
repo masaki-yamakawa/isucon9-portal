@@ -19,6 +19,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('best_score', models.IntegerField(default=0, verbose_name='ベストスコア')),
                 ('latest_score', models.IntegerField(default=0, verbose_name='最新スコア')),
+                ('total_score', models.IntegerField(default=0, verbose_name='累計スコア')),
                 ('latest_is_passed', models.BooleanField(blank=True, default=False, verbose_name='最新のベンチマーク成否フラグ')),
                 ('team', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to='authentication.Team')),
             ],

@@ -35,6 +35,7 @@
                                 <th>Latest Score</th>
                                 <th>Best Score</th>
                                 <th>FinishTime</th>
+                                <th>Total Score</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -46,6 +47,7 @@
                                 <td class="has-text-right">{{ score.latest_score|intcomma }}</td>
                                 <td class="has-text-right">{{ score.best_score|intcomma }}</td>
                                 <td>{{ score.latest_scored_at|date:"H:i:s" }}</td>
+                                <td class="has-text-right">{{ score.total_score|intcomma }}</td>
                             </tr>
                             {% endfor %}
                         </tbody>

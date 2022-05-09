@@ -32,6 +32,7 @@ class Migration(migrations.Migration):
                 ('status', models.CharField(choices=[('waiting', 'waiting'), ('running', 'running'), ('done', 'done'), ('aborted', 'aborted'), ('canceled', 'canceled')], default='waiting', max_length=100, verbose_name='進捗')),
                 ('is_passed', models.BooleanField(default=False, verbose_name='正答フラグ')),
                 ('score', models.IntegerField(default=0, verbose_name='獲得スコア')),
+                ('total_score', models.IntegerField(verbose_name='累計スコア')),       
                 ('result_json', models.TextField(verbose_name='結果JSON')),
                 ('log_text', models.TextField(verbose_name='ログ文字列')),
                 ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='作成日時')),
