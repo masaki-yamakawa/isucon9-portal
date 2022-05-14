@@ -4,6 +4,9 @@ services:
   enqueuer:
     build: .
     hostname: enqueuer
+    environment:
+      PORTAL_API_SERVER: ${PORTAL_API_SERVER}
+      PARTICIPATE_AT: ${PARTICIPATE_AT}
 
 networks:
   default:
