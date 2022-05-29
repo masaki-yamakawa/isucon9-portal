@@ -194,22 +194,6 @@ REGISTRATION_END_AT = portal_utils.get_jst_datetime(2022, 5, 31, 9, 0, 0)
 # コンテスト開催期間
 # 日付
 CONTEST_DATES = [
-    datetime.date(2022, 5, 14),
-    datetime.date(2022, 5, 15),
-    datetime.date(2022, 5, 16),
-    datetime.date(2022, 5, 17),
-    datetime.date(2022, 5, 18),
-    datetime.date(2022, 5, 19),
-    datetime.date(2022, 5, 20),
-    datetime.date(2022, 5, 21),
-    datetime.date(2022, 5, 22),
-    datetime.date(2022, 5, 23),
-    datetime.date(2022, 5, 24),
-    datetime.date(2022, 5, 25),
-    datetime.date(2022, 5, 26),
-    datetime.date(2022, 5, 27),
-    datetime.date(2022, 5, 28),
-    datetime.date(2022, 5, 29),
     datetime.date(2022, 5, 30),
     datetime.date(2022, 5, 31),
     datetime.date(2022, 6, 1),
@@ -220,7 +204,8 @@ CONTEST_DATES = [
     datetime.date(2022, 6, 6),
     datetime.date(2022, 6, 7),
     datetime.date(2022, 6, 8),
-    datetime.date(2022, 6, 9)
+    datetime.date(2022, 6, 9),
+    datetime.date(2022, 6, 10)
 ]
 
 # 時刻
