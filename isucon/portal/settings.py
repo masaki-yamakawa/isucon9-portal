@@ -189,23 +189,20 @@ LOGGING = {
 
 # 登録期間
 REGISTRATION_START_AT = portal_utils.get_jst_datetime(2022, 4, 1, 9, 0, 0)
-REGISTRATION_END_AT = portal_utils.get_jst_datetime(2022, 5, 31, 9, 0, 0)
+REGISTRATION_END_AT = portal_utils.get_jst_datetime(2022, 6, 30, 9, 0, 0)
 
 # コンテスト開催期間
 # 日付
 CONTEST_DATES = [
-    datetime.date(2022, 5, 30),
-    datetime.date(2022, 5, 31),
-    datetime.date(2022, 6, 1),
-    datetime.date(2022, 6, 2),
-    datetime.date(2022, 6, 3),
     datetime.date(2022, 6, 4),
     datetime.date(2022, 6, 5),
     datetime.date(2022, 6, 6),
     datetime.date(2022, 6, 7),
     datetime.date(2022, 6, 8),
     datetime.date(2022, 6, 9),
-    datetime.date(2022, 6, 10)
+    datetime.date(2022, 6, 10),
+    datetime.date(2022, 6, 11),
+    datetime.date(2022, 6, 12)
 ]
 
 # 時刻

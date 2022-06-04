@@ -1,5 +1,7 @@
 import ipaddress
 
+from urllib.parse import urlparse
+
 from django import forms
 from django.core.validators import RegexValidator
 
@@ -8,13 +10,16 @@ from isucon.portal.authentication.models import Team, User
 from isucon.portal.contest.models import Server
 
 def global_ip_validator(value):
-    try:
-        address = ipaddress.ip_address(value)
-    except ValueError:
-        raise forms.ValidationError("IPv4アドレスではありません")
+#    try:
+#        address = ipaddress.ip_address(value)
+#    except ValueError:
+#        raise forms.ValidationError("IPv4アドレスではありません")
 #    if address.is_global:
 #        return value
 #    raise forms.ValidationError("グローバルIPではありません")
+    url = urlparse(value)
+    if len(url.scheme) == 0:
+        raise forms.ValidationError("URL形式が誤っています")
     return value
 
 def private_ip_validator(value):

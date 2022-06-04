@@ -29,8 +29,10 @@
                           <thead>
                               <tr>
                                   <th>Name</th>
-                                  <th>Global IP</th>
+                                  <th>Benchmark Target URL</th>
+<!--
                                   <th>Private IP</th>
+-->
                                   <th></th>
                               </tr>
                           </thead>
@@ -45,7 +47,9 @@
                                           </label>
                                       </td>
                                       <td>{{ server.global_ip }}</td>
+<!--
                                       <td>{{ server.private_ip }}</td>
+-->
                                       <td>
                                         <button type="button" class="button is-small is-danger button-delete-server" data-id="{{ server.id }}">削除</button>
                                       </td>
@@ -95,7 +99,7 @@
 
           <div class="field is-horizontal">
             <div class="field-label is-normal">
-              <label class="label">Global IP</label>
+              <label class="label">Benchmark Target URL</label>
             </div>
             <div class="field-body">
               <div class="field">
@@ -109,7 +113,7 @@
             </div>
           </div>
 
-
+<!--
           <div class="field is-horizontal">
             <div class="field-label is-normal">
               <label class="label">Private IP</label>
@@ -125,6 +129,7 @@
               </div>
             </div>
           </div>
+-->
 
           <button type="submit" class="button is-primary">保存</button>
 
