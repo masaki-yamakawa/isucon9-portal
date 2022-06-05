@@ -188,13 +188,12 @@ LOGGING = {
 
 
 # 登録期間
-REGISTRATION_START_AT = portal_utils.get_jst_datetime(2022, 4, 1, 9, 0, 0)
+REGISTRATION_START_AT = portal_utils.get_jst_datetime(2022, 6, 1, 9, 0, 0)
 REGISTRATION_END_AT = portal_utils.get_jst_datetime(2022, 6, 30, 9, 0, 0)
 
 # コンテスト開催期間
 # 日付
 CONTEST_DATES = [
-    datetime.date(2022, 6, 4),
     datetime.date(2022, 6, 5),
     datetime.date(2022, 6, 6),
     datetime.date(2022, 6, 7),
@@ -210,7 +209,7 @@ CONTEST_START_TIME = portal_utils.get_jst_time(0, 0, 0)
 CONTEST_END_TIME = portal_utils.get_jst_time(23, 59, 59)
 
 # Result
-SHOW_RESULT_AFTER = portal_utils.get_jst_datetime(2022, 4, 1, 22, 0, 0)
+SHOW_RESULT_AFTER = portal_utils.get_jst_datetime(2022, 6, 1, 22, 0, 0)
 
 # Github認証に使うトークン
 # TODO: 入れ替える
@@ -220,7 +219,7 @@ SOCIAL_AUTH_GITHUB_SECRET = '3682fb62f9623c93cfc5fa1c2c79cbe9e539e016'
 BENCHMARK_ABORT_TIMEOUT_SEC = 300
 
 # チームに所属できる最大人数
-MAX_TEAM_MEMBER_NUM = 3
+MAX_TEAM_MEMBER_NUM = 5
 # 最大チーム数
 MAX_TEAM_NUM = 600
 
