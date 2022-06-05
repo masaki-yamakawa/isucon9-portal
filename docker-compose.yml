@@ -45,8 +45,8 @@ services:
       - TZ=Asia/Tokyo
 #      - PGTZ=Asia/Tokyo
       - PGTZ=UTC
-#    volumes:
-#      - "dbdata:/var/lib/postgresql/data"
+    volumes:
+      - "dbdata:/var/lib/postgresql/data"
 
   nginx:
 #    restart: always

@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=600px">
-  <title>{{ title|default:"ISUCON9 Portal" }}</title>
+  <title>{{ title|default:"ULS ISUCON2 Portal" }}</title>
   <meta http-equiv="Content-Style-Type" content="text/css">
   <meta http-equiv="Content-Script-Type" content="text/javascript">
   <link rel="icon" type="image/png" href="{% static "img/isucon_icon.png" %}">
@@ -28,6 +28,7 @@
           </div>
           <div id="navbarMenu" class="navbar-menu">
             <div class="navbar-end">
+<!--
               <span class="navbar-item">
                 <a class="button is-white is-outlined" target="_blank" href="{{ isucon_official_url }}">
                   <span class="icon">
@@ -36,6 +37,8 @@
                   <span>ISUCON Site</span>
                 </a>
               </span>
+-->
+<!--
               <span class="navbar-item">
                 <a class="button is-white is-outlined" target="_blank" href="{{ twitter_url }}">
                   <span class="icon">
@@ -44,6 +47,7 @@
                   <span>Twitter</span>
                 </a>
               </span>
+-->
               {% if user and user.is_authenticated and user.team %}
               <span class="navbar-item">
                 <a class="button is-white is-outlined" href="{% url "team_settings" %}">
